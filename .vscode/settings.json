@@ -1,0 +1,9 @@
+{
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+    "files.associations": {
+    "*.css": "tailwindcss"
+    }
+
+}
