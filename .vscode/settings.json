@@ -4,6 +4,10 @@
     "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
     "files.associations": {
     "*.css": "tailwindcss"
-    }
+    },
+    "[vue]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "Vue.volar"
+    },
 
 }
