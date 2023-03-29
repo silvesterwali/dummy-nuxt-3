@@ -45,7 +45,7 @@
       <div>
         <NuxtLink to="/products"
           class="py-2 px-4 text-white rounded-lg hover:shadow-lg hover:shadow-pink-500 bg-gradient-to-t hover:outline-none hover:ring-1 hover:ring-offset-2 hover:ring-pink-500  from-pink-500 to-red-800 ">
-          Go
+          Go to
           Product
         </NuxtLink>
       </div>
