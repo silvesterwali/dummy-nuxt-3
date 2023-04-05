@@ -22,7 +22,10 @@ import VPagination from '@hennge/vue3-pagination'
 import '@hennge/vue3-pagination/dist/vue3-pagination.css'
 import { Product } from '../../types'
 const config = useRuntimeConfig()
+const router = useRouter()
+const route = useRoute()
 const { page, pageSize, limit } = useMeta(100)
+
 
 const { data } = await useAsyncData<{ products: Product[] }>('products', () => $fetch(`/products?skip=${page.value}&limit=${limit.value}`, {
   method: "GET",
@@ -32,6 +35,17 @@ const { data } = await useAsyncData<{ products: Product[] }>('products', () => $
 })
 const products = computed(() => {
   return data.value?.products ?? []
+})
+
+watch(page, () => {
+  router.replace(`/products?page=${page.value}`)
+})
+
+onMounted(() => {
+  const { page: pageRoute } = route.query
+  if (pageRoute) {
+    page.value = parseInt(pageRoute as string)
+  }
 })
 
 </script>

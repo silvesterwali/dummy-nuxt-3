@@ -22,6 +22,8 @@ import VPagination from '@hennge/vue3-pagination'
 import '@hennge/vue3-pagination/dist/vue3-pagination.css'
 import { User } from '../../types'
 const config = useRuntimeConfig()
+const router = useRouter()
+const route = useRoute()
 const { page, pageSize, limit } = useMeta(100)
 
 const { data } = await useAsyncData<{ users: User[] }>('users', () => $fetch(`/users?skip=${page.value}&limit=${limit.value}`, {
@@ -32,6 +34,17 @@ const { data } = await useAsyncData<{ users: User[] }>('users', () => $fetch(`/u
 })
 const users = computed(() => {
   return data.value?.users ?? []
+})
+
+watch(page, () => {
+  router.replace(`/users?page=${page.value}`)
+})
+
+onMounted(() => {
+  const { page: pageRouter } = route.query
+  if (pageRouter) {
+    page.value = parseInt(pageRouter as string)
+  }
 })
 
 </script>
